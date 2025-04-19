@@ -1,7 +1,6 @@
 /etc/bash.bashrc
 
-PROMPT_COMMAND='PS1_CMD1=$(ip route get 1.1.1.1 | awk -F"src " '"'"'NR == 1{ split($2, a," ");print a[1]}'"'"')'; PS1='[\H] ${PS1_CMD1}\n\w \$\[\e[97m\] \[\e[0m\]'
-
+PROMPT_COMMAND='PS1_CMD1=$(ip route get 1.1.1.1 | awk -F"src " '"'"'NR == 1{ split($2, a," ");print a[1]}'"'"')'; PS1='[\[\e[38;5;214m\]\H\[\e[97m\]]\[\e[0m\] \[\e[38;5;226m\]${PS1_CMD1}\n\[\e[97m\]\w\[\e[97m\] \[\e[97m\]\$\[\e[0m\] '
 
 /root/.bashrc
 alias apt='\nala '
