@@ -1,0 +1,23 @@
+# From : https://www.matoski.com/article/confirm-before-executing-shutdown-reboot-linux/
+
+nano /etc/profile.d/confirm-shutdown.sh
+      alias shutdown="/usr/local/bin/confirm /sbin/shutdown"
+nano /etc/profile.d/confirm-reboot.sh
+      alias reboot="/usr/local/bin/confirm /sbin/reboot"
+
+
+nano /usr/local/bin/confirm
+
+#!/usr/bin/env bash
+echo "About to execute $1 command"
+echo -n "Would you like to proceed y/n? "
+read reply
+
+if [ "$reply" = y -o "$reply" = Y ]
+then
+   $1 "${@:2}"
+else
+   echo "$1 ${@:2} cancelled"
+fi
+
+# chmod +x /usr/local/bin/confirm
